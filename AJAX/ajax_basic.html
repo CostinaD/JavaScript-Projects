@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta tag to define character set -->
+        <meta charset="utf-8">
+         <!-- Title of the HTML document -->
+        <title>Basic AJAX Demo</title>
+        <!-- Link to the external CSS file -->
+		<link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!-- Main container for the content -->
+        <div class="main">
+            <!-- Heading for the content section -->
+			<h2>Get The Latest Content:</h2>
+            <!-- Container for displaying the content -->
+			<div class='content' id="content">
+                <!-- Button to trigger AJAX request -->
+				<input type="button" class="button" value="Get Content" id="btn_content" onclick="getContent();"/>
+			</div>
+
+            <!-- JavaScript for handling AJAX request -->
+		<script type="text/javascript">
+
+            // Step 1: Setup the XML Request Object
+            var ajax = new XMLHttpRequest();
+
+            // Step 2: Prepare the Open AJAX Request
+            ajax.open('GET', 'content.html');
+
+            // Step 3: Define the AJAX Response Callback Method
+            ajax.onreadystatechange = function() {
+            // Check if the request is complete
+            if (ajax.readyState == 4) {
+                // Update the content div with the response text
+                document.getElementById('content').innerHTML = ajax.responseText;
+            }
+        }
+
+            //Step 4: Send the AJAX Request for Data
+			 function getContent() {
+                // Send the AJAX request
+            ajax.send();
+            // Hide the button after sending the request
+            document.getElementById('btn_content').style.display = 'none';
+        }
+        
+		</script>
+    </body>
+</html>
